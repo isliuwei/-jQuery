@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>案例1</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			list-style-type: none;
+		}
+		a{
+			text-decoration: none;
+			
+		}
+		#list{
+			width: 600px;
+			height: 120px;
+			margin: 50px auto;
+			position: relative;
+		}
+		#list li{
+			width: 200px;
+			height: 20px;
+			float: left;
+			font-size: 12px;
+			text-align: center;
+		}
+		#list li a:hover{
+			text-decoration: underline;
+		}
+		#show{
+			width: 600px;
+			height: 50px;
+			position: absolute;
+			top: 130px;
+		}
+		#show a{
+			display: block;
+			width: 120px;
+			height: 24px;
+			line-height: 24px;
+			text-align: center;
+			font-size: 12px;
+			border: 1px solid #ccc;
+			position: absolute;
+			left: 50%;
+			margin-left: -60px;
+		}
+		#show .simple{
+			display: none;
+		}
+
+	</style>
+</head>
+<body>
+
+	<div id="list">
+		<ul>
+			<li ><a href="#">佳能</a><i>(30440) </i></li>
+			<li ><a href="#">索尼</a><i>(27220) </i></li>
+			<li ><a href="#">三星</a><i>(20808) </i></li>
+			<li ><a href="#">尼康</a><i>(17821) </i></li>
+			<li ><a href="#">松下</a><i>(12289) </i></li>
+			<li ><a href="#">卡西欧</a><i>(8242) </i></li>
+			<li ><a href="#">富士</a><i>(14894) </i></li>
+			<li ><a href="#">柯达</a><i>(9520) </i></li>
+			<li ><a href="#">宾得</a><i>(2195) </i></li>
+			<li ><a href="#">理光</a><i>(4114) </i></li>
+			<li ><a href="#">奥林巴斯</a><i>(12205) </i></li>
+			<li ><a href="#">明基</a><i>(1466) </i></li>
+			<li ><a href="#">爱国者</a><i>(3091) </i></li>
+			<li ><a href="#">其它品牌相机</a><i>(7275) </i></li>
+		</ul>
+		<div id="show">
+			<a class="simple" href="#"><span>精简显示品牌</span></a>
+			<a class="more" href="#"><span>显示全部品牌</span></a>
+		</div>
+</div>
+
+
+	<script src="jquery-1.11.3.min.js"></script>
+	<script>
+		$(function(){
+
+			$('#list li:gt(6)').css('display','none');
+			// $('#show .simple').click(function(){
+			// 	$('#list li:gt(6)').css('display','none');
+			// });
+			// $('#show .more').click(function(){
+			// 	$('#list li').css('display','block');
+			// 	$('#show .simple').css('display','block');
+			// 	$(this).css('display','none');
+			// })
+			// $('#show .simple').click(function(){
+			// 	$('#list li:gt(6)').css('display','none');
+			// 	$('#show .more').css('display','none');
+			// 	$(this).css('display','display');
+			// })
+
+			$('#show .more').click(function(){
+				$('#list li:hidden()').css('display','block');
+				
+			});
+
+
+
+
+
+		})
+		
+
+
+	</script>
+
+
+
+
+
+
+
+
+
+	
+</body>
+</html>
