@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>addEventListener</title>
+</head>
+<body>
+
+	<button id="btn1">按钮一</button>
+	<button id="btn2">按钮二</button>
+	<button id="btn3">按钮三</button>
+
+	<script>
+		// 给oBtn1注册两个单击事件,后续的单击事件会覆盖第一次注册的单击事件
+		var oBtn1 = document.getElementById('btn1');
+		oBtn1.onclick = function(){
+			alert('oBtn1第一个单击事件');
+		}
+		oBtn1.onclick = function(){
+			alert('oBtn1第二个单击事件');
+		}
+		// oBtn1.onmouseover = function(){
+		// 	alert('oBtn1的onmouseover事件');
+		// }
+
+		
+		// 解决上述问题的方法 使用 addEventListener 函数
+		// 为对象添加多个事件
+		// addEventListener('事件类型','事件处理函数',false)
+
+
+		// 为同一个元素添加多个相同的事件,后续添加的事件不会覆盖先前已存在的事件
+		// demo: 为oBtn2按钮添加两个onclick事件,第一次onclick事件不会被覆盖
+		var oBtn2 = document.getElementById('btn2');
+		oBtn2.addEventListener('click',function(){
+			alert('oBtn2第一个单击事件');
+		},false);
+		oBtn2.addEventListener('click',function(){
+			alert('oBtn2第二个单击事件');
+		},false);
+
+
+
+		// 为同一个元素添加不同类型的事件
+		// demo: 为oBtn3按钮添加 onclick、onmouseover、onmouseout 三个事件
+		var oBtn3 = document.getElementById('btn3');
+		oBtn3.addEventListener('click',function(){
+			alert('oBtn3 onclick 事件');
+		},false);
+		oBtn3.addEventListener('mouseover',function(){
+			alert('oBtn3 onmouseover 事件');
+		},false);
+		oBtn3.addEventListener('mouseout',function(){
+			alert('oBtn3 onmouseout 事件');
+		},false);
+		
+
+	</script>
+	
+</body>
+</html>

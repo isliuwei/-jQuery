@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>给网页中所有 p 元素添加onclick事件</title>
+</head>
+<body>
+
+
+	<p>第一个p标签</p>
+	<p>第二个p标签</p>
+
+
+	<script src="jquery-1.11.3.js"></script>
+	<script>
+		// 原生DOM操作
+		// 使用了文档就绪函数和函数闭包
+		// var aP = document.getElementsByTagName('p');
+		// for(var i=0; i<aP.length; i++){
+		// 	(function(index){
+		// 		aP[index].onclick = function(){
+		// 		alert(aP[index].innerHTML);
+		// 	}
+		// 	})(i);	
+		// }
+
+		// jQuery操作
+		$('p').click(function(){
+			alert($(this).html());
+			// alert(this.innerHTML);
+		})
+
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		
+	</style>
+</head>
+<body>
+	<input  type="checkbox" checked='checked'>选项一
+	<input  type="checkbox" checked='checked'>选项二
+	<input  type="checkbox" >选项三
+	<input  type="checkbox" >选项四
+	<input  type="checkbox" checked='checked'>选项五
+	<br>	
+	<!-- 有<input type="text">个选项被选中 -->
+	<select>
+		<option value="">北京</option>
+		<option value="">天津</option>
+		<option value="">上海</option>
+		<option value="">重庆</option>
+		<option value="" selected = 'selected'>香港</option>
+		<option value="">澳门</option>
+	</select>
+	
+
+	<script src="jquery-1.11.3.js"></script>
+	<script>
+
+		// alert($('input :checked').length);
+		alert($('select :selected').text());
+		
+
+	</script>
+
+	
+	
+</body>
+</html>

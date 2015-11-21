@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+	<style>
+		#div1{
+			width: 200px;
+			height: 200px;
+			background: red;
+		}
+
+	</style>
+
+<body>
+	<div id="div1"></div>
+
+	<script>
+// 我们知道通过js获取网页中某一元素的css的style样式属性,通过'对象.style.属性'这样的方式只能获取内联的样式属性
+// 但是浏览器也提供也方式获取非内联样式属性的方法
+// IE  对象.currentStyle.属性
+// chrome  getComputedStyle(对象,false).属性
+// 如果我们考虑通过封装一个函数解决这一兼容性问题,可能的想法就是通过检测浏览器的类型然后赋予不同浏览器不同的方法
+// 但是浏览器的种类不只是只有IE、chrome,有很多很多,所以记住：“千万别检测你的浏览器”
+
+// 介绍通过BOM下的navigator检测浏览器的方法
+	// var ua = navigator.userAgent;
+	// alert(ua);
+	// if(ua.indexOf("Chrome") != -1){  // ua.indexOf("Chrome") != -1 检测ua字符串中是否含有Chrome
+	// 	alert("Chrome Browser");
+	// }
+	// if(ua.indexOf("Firefox") != -1){
+	// 	alert("Firefox Browser");
+	// }
+	// if(ua.indexOf("Safari") != -1){
+	// 	alert("Safari Browser");
+	// }
+
+	var oDiv = document.getElementById('div1');
+	// alert(  oDiv.currentStyle.width  );  // IE
+	// alert(  getComputedStyle(oDiv,false).width);  // chrome
+
+	alert(  getStyle(oDiv, 'width')  );
+
+// 能力检测: 检测是否支持该方法,若支持就调用该方法,若不支持就调用其他方法
+	function getStyle(elem, attr){
+		if(  elem.currentStyle  ){ // IE浏览器
+			return elem.currentStyle[attr];  // [属性] 访问属性的方式支持变量,即属性的值为变量
+		}else{
+			return getComputedStyle(elem,false)[attr];
+		}
+	}
+
+	</script>	
+
+
+
+	
+</body>
+</html>

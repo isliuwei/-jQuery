@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		
+	</style>
+</head>
+<body>
+	
+
+
+	<script src="jquery-1.11.3.js"></script>   
+	<script>
+
+// jQuery--文档就绪函数
+// 待网页中所有的DOM结构绘制完毕后执行其内部代码,但无需等到DOM元素所关联的东西加载完毕（例如：对于<img>标签加载完即可无需等到图片加载）
+// 能同时编写并执行多个
+		$(document).ready(function(){ // 完整写法
+			alert("hello world!");
+
+		});
+		$(function(){ // 简化写法（推荐）
+			alert("hello everyone!");
+		})
+
+// javascript window.onload
+// 必须等待网页中所有元素加载完毕后才能执行（包括图片）
+// 不能编写多个,后续的会覆盖前面的
+		window.onload = function(){
+			alert("hello jQuery!");
+		}
+		
+
+
+		
+	</script>
+	
+</body>
+</html>

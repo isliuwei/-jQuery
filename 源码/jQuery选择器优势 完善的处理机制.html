@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<p id="tt">这是id为 tt 的标签</p>	
+	<p id="mm">这是id为 mm 的标签</p>	
+</body>
+
+
+
+
+
+
+
+	<script src="jquery-1.11.3.js"></script>
+	<script>
+
+	var oP1 = document.getElementById('tt');
+	var oP2 = document.getElementById('nn') 
+	oP1.style.backgroundColor = "red";
+	// oP2.style.backgroundColor = "red";   // Uncaught TypeError: Cannot read property 'style' of null
+// 注意：在原生的DOM中,不允许对一个id不存在的元素进行操作 例如本例中id为 nn的元素
+// 为了避免该错误的发生,我们可以先进行判断 id为某一值的元素是否存在 然后在进行操作
+	if(document.getElementById('tt')){
+		alert("id为tt的元素存在,可以对其进行操作!")
+	}else{
+		alert("id为tt的元素不存在,不可以对其进行操作!")
+	}
+	if(document.getElementById('nn')){
+		alert("id为nn的元素存在,可以对其进行操作!")
+	}else{
+		alert("id为nn的元素不存在,不可以对其进行操作!")
+	}
+// 但是使用jQuery以后,无需对其进行判断,因为即使没有id为某一值的元素浏览器也不会报错,从而不会影响后续操作
+	$('#nn').css('backgroundColor','red');  // 这里没有报错
+	$('#mm').css('background-color','yellow');
+
+//那么如何利用jQuery来判读id为某一特定值的对象是否存在呢？
+/* $('#tt')获取的永远是对象,即使网页中没有此元素。因此要使用jQuery检查某个元素在网页上是否存在不能使用和DOM类似的方式
+ * 而应该根据获取到元素的长度或者转化成DOM对象进行判断	     
+ */	
+ 	console.log(typeof($('#nn')));  //即使未定义 id 为 nn 的元素 但是jQuery仍返回object
+
+ 	//根据长度判读
+ 	if($('#tt').length > 0){
+ 		alert("id为tt的元素存在,可以对其进行操作!")
+ 	}else{
+		alert("id为tt的元素不存在,不可以对其进行操作!")
+	}
+	if($('#nn').length > 0){
+ 		alert("id为nn的元素存在,可以对其进行操作!")
+ 	}else{
+		alert("id为nn的元素不存在,不可以对其进行操作!")
+	}
+
+	//转换成DOM对象判断
+	if($('#tt').get(0)){
+ 		alert("id为tt的元素存在,可以对其进行操作!")
+ 	}else{
+		alert("id为tt的元素不存在,不可以对其进行操作!")
+	}
+	if($('#nn')[0]){
+ 		alert("id为nn的元素存在,可以对其进行操作!")
+ 	}else{
+		alert("id为nn的元素不存在,不可以对其进行操作!")
+	}
+
+
+
+
+
+
+
+
+	</script>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>返回顶部</title>
+</head>
+	<style>
+		body{
+			height: 2000px;
+		}
+		#go-top{
+			width: 50px;
+			height: 50px;
+			background: #ccc;
+			border: 1px solid #000;
+			position: fixed; /*相对于浏览器固定定位*/ 
+			right: 10px;
+			bottom: 10px;
+			display: none;
+		}
+
+	</style>
+<body>
+
+
+	<div id="top">顶部</div>
+	<div id="go-top">返回顶部</div>
+
+	<script src="jquery-1.11.3.js"></script> 
+	<script>
+
+// 需求: 当页面滚动至一定高度时,才显示 #go-top ,当单击 #go-top 时,返回网页顶部
+// 首先将 #go-top 的dispaly属性设为none 将其隐藏
+// 然后为整个 window 注册 scroll 事件
+// 取出当前滚动条的位置 $(window).srollTop() 的值,然后判读该值是否满足让 #go-top 显示的条件
+// 满足便将 #go-top 的display属性设为 block 将其显示
+// 然后再给 #go-top 注册单击事件 将滚动条的 $(window).srollTop() 设为0 --> $(window).scrollTop(0)
+
+		$(function(){ // 文档就绪函数
+			$(window).scroll(function(){
+				if( $(window).scrollTop() > 400){
+					$('#go-top').css('display','block');
+				}else{
+					$('#go-top').css('display','none');
+				}
+			})
+			$('#go-top').css('cursor','pointer');
+			$('#go-top').click(function(){
+				$(window).scrollTop(0);
+			})
+		})
+		
+		
+		
+
+
+	</script>
+
+	
+</body>
+</html>

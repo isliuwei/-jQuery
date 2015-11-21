@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>对多选框进行操作,输出被选中的多选框的个数</title>
+</head>
+	
+<body>
+
+	<input type="checkbox">上海
+	<br>
+	<input type="checkbox" checked = 'checked'>北京
+	<br>
+	<input type="checkbox">天津
+	<br>
+	<input type="checkbox" checked = 'checked'>香港
+	<br>
+	<input type="checkbox">广州
+	<br>
+	<input type="checkbox" checked = 'checked'>厦门
+
+
+	
+
+
+	<script src="jquery-1.11.3.js"></script>
+	<script>
+
+
+
+		// 原生DOM操作
+		var aInput = document.getElementsByTagName('input');
+		//console.log(aInput);
+		var aChecked = [];
+		for(var i=0; i<aInput.length; i++){
+			//console.log(aInput[i].checked);  //此处返回 true false 布尔值
+			if(aInput[i].checked){ // aInput[i].checked == true
+				//console.log(aInput[i]);
+				aChecked.push(aInput[i]);
+			}
+		}
+		alert(aChecked.length);
+
+
+
+		// jQuery操作
+		// alert($('input:checked').length);
+
+
+
+
+
+		
+
+
+
+
+		
+
+	</script>
+	
+</body>
+</html>

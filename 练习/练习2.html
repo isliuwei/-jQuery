@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>使一个特定的表格隔行变色</title>
+</head>
+	<style>
+		#tb td{
+			border: 1px solid #000;
+		}
+	</style>
+<body>
+
+
+	<table id="tb">
+		<tr><td>第一行第一列</td><td>第一行第二列</td></tr>
+		<tr><td>第二行第一列</td><td>第二行第二列</td></tr>
+		<tr><td>第三行第一列</td><td>第三行第二列</td></tr>
+		<tr><td>第四行第一列</td><td>第四行第二列</td></tr>
+		<tr><td>第五行第一列</td><td>第五行第二列</td></tr>
+		<tr><td>第六行第一列</td><td>第六行第二列</td></tr>
+	</table>
+
+
+	<script src="jquery-1.11.3.js"></script>
+	<script>
+
+		// 原生DOM操作
+		var oTb = document.getElementById('tb');
+		var aTr = oTb.getElementsByTagName('tr');
+		//console.log(aTr);
+
+		// for(var i=0; i<aTr.length; i++){
+		// 	aTr[i].index = i;
+		// 	if(aTr[i].index % 2 == 0){
+		// 		aTr[i].style.background = 'red';
+		// 	} 
+		// }
+
+		for(var i=0; i<aTr.length; i++){
+			if(i%2 == 0){
+				aTr[i].style.background = 'blue';
+			}
+		}
+
+		// jQuery操作
+		$('#tb tr:odd').css('background','yellow');
+
+
+
+
+		
+
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<p id="p1">这是id为p1的标签！</p>
+	<p id="p2">这是id为p2的标签！</p>
+	<p id="p3">这是id为p3的标签！</p>
+	
+</body>
+
+
+
+
+
+
+
+	<script src="jquery-1.11.3.js"></script>
+	<script>
+/* 
+ * 规范： jQuery -- var $variable => jQuery对象
+ *	     DOM -- var variable => DOM对象
+ * 如果获取了jQuery对象那么在变量前加 $ 符号
+ *
+ */
+
+ // DOM对象转换成jQuery对象
+ // $( DOM对象 ) 就可以使得DOM对象转换成jQuery对象,就可以使用jQuery中方法
+
+ 		var oP1 = document.getElementById('p1');
+ 		// DOM对象使用原生的方法
+ 		alert(oP1.innerHTML);
+ 		// DOM对象转换成jQuery对象,使用jQuery对方法
+ 		alert($(oP1).html());
+
+ // jQuery对象转换成DOM对象
+ // 两种方法: [index] 和 get(index)
+ // 第一种: jQuery对象是一个类似数组的对象,可以通过[index]的方式得到相应地DOM对象
+ 		var $p2 = $('#p2');
+ 		var oP2 = $p2[0];
+ 		alert($p2.html());
+ 		alert(oP2.innerHTML);
+ // 第二种: jQuery自身提供的,通过get(index)获取相应的DOM对象
+ 		var $p3 = $('#p3');
+ 		var oP3 = $p3.get(0);
+ 		alert($p3.html());
+ 		alert(oP3.innerHTML);
+// 强调：是DOM对象那么就只能使用DOM中的方法；是jQuery对象就只能使用jQuery中的方法
+
+
+
+
+
+
+
+
+
+	</script>
+</html>

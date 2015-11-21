@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#div1,#div2,#div3,#div4{
+			width: 200px;
+			height: 200px;
+			border: 1px solid #000;
+			float: left;
+			margin-right: 20px;
+		}
+		#div2,#div4{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<button id="btn1">按钮一</button>
+	<button id="btn2">按钮二</button>
+	<div id="div1">
+		div1
+	</div>
+	<div id="div2">
+		div2
+	</div>
+	<div id="div3">
+		div3
+	</div>
+	<div id="div4"></div>
+
+
+	<script src="jquery-1.11.3.js"></script>
+	<script>
+		$('#btn1').click(function(){
+			if(this.style.display == 'none'){
+				$('#div4').css('display','block');
+			}else{
+				$('#div4').css('display','none');
+			}
+			
+		});
+		$('#btn2').click(function(){
+			$('div:hidden').show(1000).css('background','red');
+		});
+	</script>
+
+	
+	
+</body>
+</html>
