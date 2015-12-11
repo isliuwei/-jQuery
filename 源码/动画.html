@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>动画</title>
+	<style>
+		ul{
+			list-style-type: none;
+		}
+		#div1{
+			width: 200px;
+			height: 200px;
+			background: blue;
+		}
+		#show-box{
+			width: 300px;
+			height: 200px;
+			background: green;
+			overflow: hidden;
+			
+			
+		}
+		#show-imgs{
+			width: 900px;
+			height: 180px;
+		}
+		#show-box .box1,.box2,.box3{
+			width: 260px;
+			height: 180px;
+
+		}
+		#show-list li{
+			
+			float: left;
+		}
+
+		.box1{
+			background: blue;	
+		}
+		.box2{
+			background: red;	
+		}
+		.box3{
+			background: yellow;	
+		}
+
+	</style>
+</head>
+<body>
+
+	<button id="btn">按钮</button>
+	<div id="div1"></div>
+	<button id="prev">&lt;</button>
+	<button id="next">&gt;</button>
+	<div id="show-box">
+		<div id="show-imgs">
+			<ul id="show-list">
+				<li class='box1'>1</li>
+				<li class='box2'>2</li>
+				<li class='box3'>3</li>
+			</ul>
+		</div>	
+	</div>
+
+	
+
+
+	<script src="jquery-1.11.3.js"></script>
+	<script>
+		$(function(){
+
+			$('#show-list li').animate({
+				width: '-10px'
+			},1000);
+			// $('#btn').on('click',function(){
+			// 	$('#div1').toggle();
+			// });
+			// $('#btn').on('click',function(){
+			// 	$('#div1').fadeToggle(1000);
+			// });
+			// $('#btn').on('click',function(){
+			// 	$('#div1').slideToggle(1000);
+			// });
+			
+		});
+	</script>
+	
+</body>
+</html>

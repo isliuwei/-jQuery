@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>折叠菜单栏</title>
+	
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			list-style-type: none;
+		}
+		#container{
+			width: 200px;
+			border: 1px solid black;
+		}
+		#container h4{
+			width: 200px;
+			height: 30px;
+			background: #000;
+			color: #fff;
+			line-height: 30px;
+			cursor: pointer;
+		}
+		#level1 ul{
+			display: none;
+		}
+
+			
+	</style>
+</head>
+<body>
+	<div id="container">
+		<ul id="level1">
+			<li>
+				<h4>管理区</h4>
+				<ul class="level2">
+					<li>1111</li>
+					<li>2222</li>
+					<li>3333</li>
+				</ul>
+			</li>
+			<li>
+				<h4>交流区</h4>
+				<ul class="level2">
+					<li>4444</li>
+					<li>5555</li>
+					<li>6666</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+
+
+
+		
+		<script src="jquery-1.11.3.js"></script>
+		<script>
+			$(function(){
+				$('#level1 h4').on('click', function(){
+					//$(this).next().show(500);
+					$(this).next().toggle(500);
+				});
+			});
+			
+			
+		</script>
+
+
+
+
+	
+	
+
+
+
+	<script>
+
+		
+		
+	
+	
+	</script>
+
+
+</body>
+</html>

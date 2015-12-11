@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#ul1{
+			background: red;
+		}
+		#ul1 li{
+			background: green;
+			border: 1px solid #000;
+		}
+	</style>
+</head>
+<body>
+
+	<button id="btn1">createElements</button>
+
+	<ul id="ul1">
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+	</ul>
+
+	<script>
+// 需求：要求单击每一个li都能弹出内部的内容 也就是希望每个li元素都能成功绑定单击事件 但是发现我们通过DOM操作后续生成的元素并没有成功绑定单击事件 只有原先的li才被绑了事件 因为先前的元素在页面加载时通过 22-26行的操作被绑定了事件 27-32行虽然生成了li并且绑定到了ul中 但是并未有绑定事件的操作 所以无法显示单击事件所能实现的功能 这就是“后生成元素事件绑定的问题”
+// 解决这一问题方式有三种
+// ①就是每当新生成一个li元素，便给它绑定单击事件 如 34-36行的语句 但是这种方式存在严重的性能问题，因为函数也相当于对象，该操作就相当于每生成一个元素就使用new操作符生成一个对象，频繁操作就频繁申请内存，因而性能不佳
+// ②就是将单击事件的处理函数封装成一个函数对象 如 30-32 43行的语句 这就解决了频繁生成新对象的问题 只生成了一个对象 解决性能不佳的问题
+// ③利用“事件冒泡”解决这一问题 我们给li的父元素ul注册单击事件 当单击
+		var oUl = document.getElementById('ul1');
+		var aLi = oUl.getElementsByTagName('li');
+		// for(var i=0; i<aLi.length; i++){
+		// 	aLi[i].onclick = function(){
+		// 		alert(this.innerHTML);
+		// 	}
+		// }
+
+		// oUl.onclick = function(){
+		// 	alert(this.innerHTML);
+		// }
+
+		oUl.onclick = function(e){
+			e = e || window.event;
+			if(e.target.tagName == 'LI'){
+				alert(e.target.innerHTML);
+			}
+			
+		}
+
+
+		// var fn = function(){
+		// 		alert(this.innerHTML);
+		// 	};
+		var oBtn = document.getElementById('btn1');
+		oBtn.onclick = function(){
+			var oLi = document.createElement('li');
+			oUl.appendChild(oLi);
+			oLi.innerHTML = Math.floor(Math.random()*100);
+
+			// oLi.onclick = function(){
+			// 	alert(this.innerHTML);
+			// }
+
+			// oLi.onclick = fn;
+
+
+		}
+	</script>
+	
+</body>
+</html>

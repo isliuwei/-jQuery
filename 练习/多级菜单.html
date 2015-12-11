@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>水平导航</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			list-style-type: none;
+		}
+		a{
+			text-decoration: none;
+			color: black;
+		}
+		#main-item a{
+			width: 120px;
+			height: 30px;
+			display: block;
+			line-height: 30px;
+			margin-right: 5px;
+			text-align: center;
+			border: 1px solid #ccc;
+			background: #ccc;	
+		}
+		#main-item .main-item-list{
+			float: left;
+		}
+		#main-item .sub-item{
+			border: 1px solid #ccc;
+			width: 120px;	
+		}
+		#main-item .sub-item li{
+			height: 30px;
+			line-height: 30px;
+			text-align: center;
+		}
+		#main-item .sub-item{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+
+
+	<ul id="main-item">
+			<li class="main-item-list">
+				<a href="#">item1</a>
+				<ul class="sub-item">
+					<li>sub-item1</li>
+					<li>sub-item2</li>
+					<li>sub-item3</li>
+				</ul>
+			</li>	
+
+			<li class="main-item-list">
+				<a href="#">item2</a>
+				<ul class="sub-item">
+					<li>sub-item1</li>
+					<li>sub-item2</li>
+					<li>sub-item3</li>
+				</ul>	
+			</li>
+
+			<li class="main-item-list">
+				<a href="#">item3</a>
+				<ul class="sub-item">
+					<li>sub-item1</li>
+					<li>sub-item2</li>
+					<li>sub-item3</li>
+				</ul>	
+			</li>
+			
+			<li class="main-item-list">
+				<a href="#">item4</a>
+				<ul class="sub-item">
+					<li>sub-item1</li>
+					<li>sub-item2</li>
+					<li>sub-item3</li>
+				</ul>	
+			</li>			
+	</ul>
+
+
+	<script>
+		var oMain = document.getElementById('main-item');
+		var aLi = oMain.getElementsByTagName('li');
+		var aUl = oMain.getElementsByTagName('ul');
+		for(var i=0; i<aLi.length; i++){
+			if(aLi[i].className == 'main-item-list'){
+					aLi[i].onmouseover = function(){
+					var arr = this.getElementsByTagName('ul');
+					arr[0].style.display='block';
+				};
+				aLi[i].onmouseout = function(){
+					// var arr = this.getElementsByTagName('ul');
+					// arr[0].style.display='none';
+					this.getElementsByTagName('ul')[0].style.display='none';
+				};
+			}	
+		}
+	</script>
+	
+</body>
+</html>

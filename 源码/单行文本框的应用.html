@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>获取或失去焦点改变样式</title>
+	<style>
+		.focus{
+			border: 1px solid #f00;
+			background: #fcc;
+		}
+	</style>
+</head>
+<body>
+	<fieldset>
+		<legend>个人信息</legend>
+		<div>
+			<label for="username">名称：</label>
+			<input type="text" id="username">
+		</div>
+		<div>
+			<label for="pass">密码：</label>
+			<input type="text" id="pass">
+		</div>
+		<div>
+			<label for="msg">详细信息：</label>
+			<textarea id="msg"></textarea>
+		</div>
+	</fieldset>
+
+
+	<script src="jquery-1.11.3.js"></script> 
+	<script>
+		$(function(){
+			$(':input').on('focus',function(){
+				$(this).addClass('focus');
+			}).on('blur',function(){
+				$(this).removeClass('focus');
+			});
+		});
+	</script>
+
+	
+</body>
+</html>

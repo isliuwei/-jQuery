@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>文本框默认值</title>
+	<style>
+		.focus{
+			border: 1px solid #f00;
+			background: #fcc;
+		}
+	</style>
+</head>
+<body>
+	<fieldset>
+		<legend>个人信息</legend>
+		<div>
+			<label for="username">名称：</label>
+			<input type="text" id="username" value='名称'>
+		</div>
+		<div>
+			<label for="pass">密码：</label>
+			<input type="password" id="pass" value='密码'>
+		</div>
+		<div>
+			<label for="msg">详细信息：</label>
+			<textarea id="msg">详细信息</textarea>
+		</div>
+	</fieldset>
+
+
+	<script src="jquery-1.11.3.js"></script> 
+	<script>
+		$(function(){
+			$(':input').on('focus',function(){
+				$(this).addClass('focus');
+				if($(this).val()){
+					$(this).val('');
+				}
+			}).on('blur',function(){
+				$(this).removeClass('focus');
+				if($(this).val()==''){
+				//this.value = this.defaultValue;
+				$(this).val(this.defaultValue);
+				}
+			});
+		});
+	</script>
+
+	
+</body>
+</html>

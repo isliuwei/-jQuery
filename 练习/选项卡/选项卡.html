@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>选项卡</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			list-style-type: none;
+		}
+		#container{
+			width: 1000px;
+			height: 300px;
+			background: #ccc;
+			margin: 50px auto;
+			position: relative;
+			/*cursor: pointer;*/
+		}
+		#container ul{
+			position: absolute;
+			height: 30px;
+			right: 10px;
+			bottom: 5px;
+		}
+		#menu li{
+			width: 20px;
+			height: 20px;
+			line-height: 20px;
+			text-align: center;
+			border: 1px solid #ccc;
+			/*background: blue;*/
+			color: #fff;
+			float: left;
+			margin-right: 5px;	
+			cursor: pointer;	
+		}
+		#menu .selected{
+			background: orange;
+		}
+		#imgs img{
+			display: none;
+
+		}
+		#imgs .selected{
+			display: block;
+		}
+		#prev{
+			position: absolute;
+			display: block;
+			width: 40px;
+			height: 74px;
+			top: 150px;
+			margin-top: -37px;
+			left: 0px;
+			background: url(./img/focus_btn.png) no-repeat 0 -74px;
+			cursor: pointer;
+		}
+		#next{
+			position: absolute;
+			display: block;
+			width: 40px;
+			height: 74px;
+			top: 150px;
+			margin-top: -37px;
+			right: 0px;
+			background: url(./img/focus_btn.png) no-repeat -40px -74px;
+			cursor: pointer;
+		}
+		/*#imgs .pre-btn{
+			width: 20px;
+			height: 20px;
+			float: left;
+			position: absolute;
+
+		}
+		#imgs .next-btn{
+			width: 20px;
+			height: 20px;
+			float: left;
+			position: absolute;
+		}*/
+	</style>
+</head>
+<body>
+	<div id="container">
+		<ul id="menu">
+			<li class="selected">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+		<div id="imgs">
+			<span id="prev"></span>
+			<span id="next"></span>
+			<!-- <span class="pre-btn">&lt;</span>
+			<span class="next-btn">&gt;</span> -->
+			<img src="img/zhulou.jpg" alt="" class="selected">
+			<img src="img/tushuguan.jpg" alt="">
+			<img src="img/guangchang.jpg" alt="">
+			<img src="img/sushe.jpg" alt="">
+		</div>		
+	</div>
+
+
+<script src="jquery-1.11.3.js"></script>
+<script>
+
+	$(function(){
+		var index = 0;
+		// 图片切换函数
+		function changeImgs(index){ 
+			//$(elem).addClass('selected').siblings().removeClass('selected');
+			//var index = $(elem).index(); //获取当前li的索引
+			//$('#imgs img:eq('+index+')').addClass('selected').siblings().removeClass('selected');
+			$('#menu li:eq('+index+')').addClass('selected').siblings().removeClass('selected');
+			$('#imgs img:eq('+index+')').addClass('selected').siblings().removeClass('selected');
+		}
+
+
+		$('#menu li').on('mouseover',function(){
+			//changeImgs(this); // 实参this是当前滑入的li标签, 将其传给changeImgs函数的形参elem,此时的elem就是当前滑入的li标签 
+			index = $(this).index();
+			changeImgs(index);
+		});
+
+
+		
+		$('#next').on('click',function(){
+			index++;
+			if(index == $('#imgs img').length){
+				index = 0;
+			}
+			changeImgs(index);
+
+		});
+
+		$('#prev').on('click',function(){
+			index--;
+			if(index == -1){
+				index = $('#imgs img').length-1;
+			}
+			changeImgs(index);
+			
+		});
+
+		// setInterval(function(){
+		// 	$('#next').on('click',function(){
+		// 		index++;
+		// 		if(index == $('#imgs img').length){
+		// 			index = 0;
+		// 		}
+		// 		changeImgs(index);
+
+		// 	});
+		// 	// console.log(Math.random());
+		// },300);
+
+
+		
+
+	});
+
+
+	
+
+
+		
+	
+		
+
+
+</script>
+
+
+
+	
+
+	
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Tag</title>
+	
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			list-style-type: none;
+		}
+		#container{
+			width: 400px;
+			height: 200px;
+			margin: 50px auto;
+		}
+		#tag{
+			width: 400px;
+			height: 30px;
+		}
+		#tag li{
+			float: left;
+			width: 120px;
+			height: 30px;
+			line-height: 30px;
+			text-align: center;
+			background: #ccc;
+			margin-right: 5px;
+			cursor: pointer;
+		}
+		#tag .selected{
+			background: black;
+			color: white;
+		}
+		#content{
+			border-top: 1px solid black;
+		}
+		#content div{
+			width: 400px;
+			height: 170px;
+			background: yellow;
+			display: none;
+		}
+		#content .selected{
+			display: block;
+		}
+	</style>
+</head>
+<body>
+
+<!-- html部分 -->
+	<div id="container">
+		<ul id="tag">
+			<li class="selected">jQuery</li>
+			<li>javascript</li>
+			<li>css</li>
+		</ul>
+		<div id="content">
+			<div class="selected">yellow / jQuery</div>
+			<div style=background:red>red / javascript</div>
+			<div style=background:green>green / css</div>	
+		</div>	
+	</div>	
+
+
+<!-- js部分 -->
+
+	<script src="jquery-1.11.3.js"></script>
+	<script>
+		
+	// var oTag = document.getElementById('tag');	
+	// var aLi = oTag.getElementsByTagName('li'); 
+	// var oContent = document.getElementById('content');
+	// var aDiv = oContent.getElementsByTagName('div');
+
+	// for(var i=0; i<aLi.length; i++){
+	// 	aLi[i].index = i;
+	// 	aLi[i].onclick = function(){
+	// 		for(var i=0; i<aLi.length; i++){
+	// 			aLi[i].className = "";
+	// 			aDiv[i].className = "";
+	// 		}
+	// 		this.className = 'selected';
+	// 		aDiv[this.index].className = 'selected';
+	// 	};
+	// }
+
+
+		
+			$(function(){
+				$('#tag li').on('click',function(){
+					// $('#tag li').removeClass('selected');
+					// $(this).addClass('selected');
+					$(this).addClass('selected')
+						   .siblings().removeClass('selected');
+
+					var index = $(this).index(); // 获取当前索引
+					$('#content div:eq(' + index + ')')
+						.addClass('selected')
+						.siblings().removeClass('selected');
+				});
+			});
+			
+			
+		
+	
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

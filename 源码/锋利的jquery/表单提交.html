@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单提交</title>
+	<style>
+		.require{
+			color: red;
+		}
+		.prompt{
+			background-repeat: no-repeat;
+			padding-left: 20px;
+			color: red;	
+		}
+		.right{
+			background-color: #E9FBEB;
+			background-image: url(right.gif);
+		}
+		.wrong{
+			background-color: #FFE0E9;
+			background-image: url(wrong.gif);
+		}
+	</style>
+</head>
+<body>
+
+	<form action="">
+		<p>
+			<label for="username">用户名：</label>
+			<input type="text" id="username">
+			<span class="require">*</span>
+			<span class="info"></span>
+		</p>
+		<p>
+			<label for="mail">邮箱：</label>
+			<input type="text" id="mail">
+			<span class="require">*</span>
+			<span class="info"></span>
+		</p>
+		<p>
+			<label for="personinfo">个人资料：</label>
+			<input type="text" id="personinfo">
+		</p>
+		<p>
+			<input type="submit" id="submit" value="提交">
+			<input type="reset" id="reset" value="重置">
+		</p>
+	</form>
+	
+
+
+	<script src="jquery-1.11.3.js"></script> 
+	<script>
+		$(function(){
+			//var $username = $('#username');
+			$('#username').on('focus',function(){
+				if(this.value.length < 6){
+					$('#username').nextAll('.info').empty().append('<span class="prompt wrong">请输入至少6位的用户名.</span>');
+				}else{
+					$('#username').nextAll('.info').empty().append('<span class="prompt right">输入正确.</span>');
+				}
+			}).on('keyup',function(){
+				$(this).trigger('focus');
+			});
+
+			// $('#mail').on('focus',function(){
+			// 	if(this.value.length < 6){
+			// 		$('#mail').nextAll('.info').empty().append('<span class="prompt wrong">请输入正确的E-Mail地址.</span>');
+			// 	}else{
+			// 		$('#mail').nextAll('.info').empty().append('<span class="prompt right">输入正确.</span>');
+			// 	}
+			// });
+
+		});
+
+	</script> 
+
+</body>
+</html>

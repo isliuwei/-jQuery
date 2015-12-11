@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>超级链接提示</title>
+	<style>
+
+		a{
+			margin: 20px;
+			
+		}
+		.link{
+			width: 50px;
+			font-size: 14px;
+			height: 20px;
+			line-height: 20px;
+			border:1px solid #333;
+			background:#f7f5d1;
+			display: none;
+			position: absolute;
+			
+		}
+
+	</style>
+</head>
+<body>
+
+		<p><a href="#" title="">网易</a></p>
+		<p><a href="#" title="新浪">新浪</a></p>
+		<p><a href="#" title="百度">百度</a></p>
+		<p><a href="#" title="搜狐">搜狐</a></p>	
+
+
+
+
+	<script src="jquery-1.11.3.js"></script> 
+	<script>
+		$('a').hover(function(e){
+			this.myTitle = this.title?this.title:this.innerHTML;
+			this.title = "";
+			tooltip = $("<div>"+this.myTitle+"</div>");
+			tooltip.appendTo($('body')).addClass('link').offset({top: e.pageY+15, left: e.pageX+15}).show('fast');
+		},function(){
+			this.title = this.myTitle;
+			tooltip.remove();
+		}).on('mousemove',function(e){
+			tooltip.offset({top: e.pageY+15, left: e.pageX+15});
+		});
+
+	</script>
+	
+</body>
+</html>

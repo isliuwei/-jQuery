@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>nav</title>
+	
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			list-style-type: none;
+		}
+		#main-li .main-list{
+			width: 120px;
+			height: 30px;
+			/*border: 1px solid red;*/
+			line-height: 30px;
+			text-align: center;
+			background: #ccc;
+			float: left;
+			margin-right: 5px;
+			cursor: pointer;
+		}
+		#main-li .sub-list{
+			border: 1px solid #ccc;
+			display: none;
+		}
+
+		
+	</style>
+</head>
+<body>
+<!-- html部分 -->
+
+
+	<ul id="main-li">
+		<li class="main-list">main-item1
+			<ul class="sub-list">
+				<li>sub-item1</li>
+				<li>sub-item2</li>
+				<li>sub-item3</li>
+			</ul>
+		</li>
+		<li class="main-list">main-item2
+			<ul class="sub-list">
+				<li>sub-item1</li>
+				<li>sub-item2</li>
+				<li>sub-item3</li>
+			</ul>
+		</li>
+		<li class="main-list">main-item3
+			<ul class="sub-list">
+				<li>sub-item1</li>
+				<li>sub-item2</li>
+				<li>sub-item3</li>
+			</ul>
+		</li>
+	</ul>
+	
+
+
+<!-- js部分 -->
+	<script src="jquery-1.11.3.js"></script>
+	<script>
+
+		// var oMainLi = document.getElementById('main-li');
+		// var aMainList = oMainLi.children;
+		// for(var i=0; i<aMainList.length; i++){
+		// 	aMainList[i].onmouseover = function(){
+		// 		var arr = this.getElementsByTagName('ul');
+		// 		var array = arr[0];
+		// 		array.style.display='block';
+		// 	};
+		// 	aMainList[i].onmouseout = function(){
+		// 		var oSubList = this.getElementsByTagName('ul')[0];
+		// 		oSubList.style.display='none';
+		// 	};
+		// }
+
+		$(function(){
+			// $('#main-li .main-list').on('mouseover',function(){
+			// 	$(this).children().show();
+			// }).on('mouseout',function(){
+			// 	$(this).children().hide();
+			// });
+
+			$('#main-li .main-list').hover(function(){
+				$(this).children().show();
+			},function(){
+				$(this).children().hide();
+			});
+
+		});
+
+
+
+
+	</script>
+
+
+</body>
+</html>

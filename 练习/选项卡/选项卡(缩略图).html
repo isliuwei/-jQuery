@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>选项卡(缩略图)</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			list-style-type: none;
+		}
+		#container{
+			width: 1000px;
+			height: 300px;
+			background: #ccc;
+			margin: 50px auto;
+			position: relative;
+			/*cursor: pointer;*/
+		}
+
+		/* 缩略图居中 */
+		#menu { 
+			position: absolute;
+			left: 50%;
+			margin-left: -208px;
+			bottom: 5px;
+		}
+
+		/* 缩略图居右 */
+		/*#menu{
+			position: absolute;
+			height: 30px;
+			right: 10px;
+			bottom: 5px;	
+		}*/
+
+		#menu img{
+			width: 100px;
+			height: 30px;
+		}
+
+		#menu li{
+			float: left;
+			margin-right: 5px;
+			text-align: center;
+			height: 30px;
+			line-height: 30px;
+		}
+
+		#menu .selected{
+			border: 2px solid #ccc;
+		}
+
+		#imgs img{
+			display: none;
+		}
+		#imgs .selected{
+			display: block;
+		}
+		#prev{
+			position: absolute;
+			display: block;
+			width: 40px;
+			height: 74px;
+			top: 150px;
+			margin-top: -37px;
+			left: 0px;
+			background: url(./img/focus_btn.png) no-repeat 0 -74px;
+			cursor: pointer;
+		}
+		#next{
+			position: absolute;
+			display: block;
+			width: 40px;
+			height: 74px;
+			top: 150px;
+			margin-top: -37px;
+			right: 0px;
+			background: url(./img/focus_btn.png) no-repeat -40px -74px;
+			cursor: pointer;
+		}
+		
+	</style>
+</head>
+<body>
+	<div id="container">
+		<ul id="menu">
+			<!-- 
+			<li class="selected">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li> 
+			-->
+			<li class="selected"><img src="img/zhulou.jpg" alt=""></li>
+			<li><img src="img/tushuguan.jpg" alt=""></li>
+			<li><img src="img/guangchang.jpg" alt=""></li>
+			<li><img src="img/sushe.jpg" alt=""></li>
+		</ul>
+		<span id="prev"></span>
+		<span id="next"></span>
+		<div id="imgs">
+			<!-- 
+			<span id="prev"></span>
+			<span id="next"></span> 
+			-->
+			<!-- 
+			<span class="pre-btn">&lt;</span>
+			<span class="next-btn">&gt;</span> 
+			-->
+			<img src="img/zhulou.jpg" alt="" class="selected">
+			<img src="img/tushuguan.jpg" alt="">
+			<img src="img/guangchang.jpg" alt="">
+			<img src="img/sushe.jpg" alt="">
+			<!-- 
+			<ul id="menu-img">
+				<li><img src="img/zhulou.jpg" alt=""></li>
+				<li><img src="img/tushuguan.jpg" alt=""></li>
+				<li><img src="img/guangchang.jpg" alt=""></li>
+				<li><img src="img/sushe.jpg" alt=""></li>
+			</ul> 
+			-->
+		</div>		
+	</div>
+
+
+
+
+
+		<script>
+			var oContainer = document.getElementById('container');
+			var oMenu = document.getElementById('menu');
+			var aLi = oMenu.getElementsByTagName('li');
+			var oImgs = document.getElementById('imgs');
+			var aImgs = oImgs.getElementsByTagName('img');
+			var oPrev = document.getElementById('prev');
+			var oNext = document.getElementById('next');
+			// var aSpan = oImgs.getElementsByTagName('span');
+			for(var i=0; i<aLi.length; i++){
+				aLi[i].index = i;
+				aLi[i].onmouseover = function(){
+					index = this.index;
+					changeImg(this.index);
+				};
+			}
+			
+			
+			// 封装切换图片函数
+			function changeImg(idx){
+				for(var i=0; i<aLi.length; i++){
+						aLi[i].className = "";
+						aImgs[i].className = "";
+					}
+					aLi[idx].className = "selected";
+					aImgs[idx].className = "selected";
+			}
+
+			oPrev.onmouseover = function(){
+				this.style.backgroundPosition  = '0px 0px';
+			}
+			oPrev.onmouseout = function(){
+				this.style.backgroundPosition  = '0px -74px';
+			}
+			oNext.onmouseover = function(){
+				this.style.backgroundPosition  = '-40px 0px';
+			}
+			oNext.onmouseout = function(){
+				this.style.backgroundPosition  = '-40px -74px';
+			}
+
+
+			var index = 0;
+
+			oNext.onclick = function(){
+				index++;
+				if(index == aImgs.length){
+					index = 0;
+				}
+				changeImg(index);
+			};
+
+			oPrev.onclick = function(){
+				index--;
+				if(index == -1){
+					index = aImgs.length-1;
+				}
+				changeImg(index);	
+			};
+
+			// play();
+
+			var timer;
+
+			function play(){
+				timer = setInterval(function(){
+					oNext.onclick();
+				},2000);
+			}
+
+			play();
+			
+			oContainer.onmouseover = function(){
+				clearInterval(timer);
+			}
+
+			oContainer.onmouseout = function(){
+				play();
+			}
+
+			
+
+
+		</script>
+
+
+	
+
+	
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>下拉框</title>
+	<style>
+		#select1{
+			width: 100px;
+			height: 160px;
+			float: left;
+		}
+
+		#control{
+			margin: 30px 2px 0px 2px;
+			width: 35px;
+			float: left;
+		}
+		button{
+			margin-top: 2px;
+			width: 35px;
+			background: #ccc;
+			border: 1px solid #000;
+			border-radius: 3px;
+		}
+
+	</style>
+</head>
+<body>
+
+	<fieldset>
+		<legend>新增界面</legend>
+		<label for="username">登录账号：</label>
+		<input type="text" value="ylxf" />
+		<br />	
+		<label for="pass">登录密码：</label>
+		<input type="password" value="123456" />* 6位密码以上
+		<br />
+		<label for="name">主持人名：</label>
+		<input type="text" value="荔红" />
+		<br />
+		负责频道：
+		<br />
+		<div id='select1'>
+			<select multiple="multiple" name="" id="select-left" style="width:100px;height:160px;">
+				<!-- <option value="">选项1</option>
+				<option value="">选项2</option>
+				<option value="">选项3</option>
+				<option value="">选项4</option>
+				<option value="">选项5</option>
+				<option value="">选项6</option>
+				<option value="">选项7</option>
+				<option value="">选项8</option>
+				<option value="">选项9</option>
+				<option value="">选项10</option>
+				<option value="">选项11</option>
+				<option value="">选项12</option> -->
+				<option value="">美丽人生</option>
+				<option value="">心花怒放</option>
+				<option value="">夜韵飞扬</option>
+				<option value="">时尚女人</option>
+				<option value="">音乐故事</option>
+				<option value="">千里良宵</option>
+				<option value="">天涯此时</option>
+				<option value="">幽兰书香</option>
+				<option value="">兰轩听雨</option>
+				<option value="">思绪徜徉</option>
+				<option value="">手有余香</option>
+				<option value="">漫步菁华</option>
+
+			</select>
+		</div>
+		
+
+		<div id="control">
+			<button id="add">&gt;|</button>
+			<br />
+			<button id="add-all">&gt;&gt;</button>
+			<br />
+			<button id="remove">|&lt;</button>
+			<br />
+			<button id="remove-all"> &lt;&lt;</button>
+			<br />
+		</div>
+			
+		<div id='select2'>
+			<select multiple="multiple" name="" id="select-right" style="width:100px;height:160px;">
+				<option value="">豆蔻芳华</option>
+			</select>
+		</div>
+		
+		
+
+		
+
+	</fieldset>
+
+
+
+	<script src="jquery-1.11.3.js"></script> 
+	<script>
+		$(function(){
+			$('#add').on('click',function(){
+				$('#select-left option:selected').appendTo('#select-right');
+				$('#select-right option:selected').prop('selected',false);
+
+			});
+			$('#add-all').on('click',function(){
+				$('#select-left option').appendTo('#select-right');
+			});
+			$('#remove').on('click',function(){
+				$('#select-right option:selected').appendTo('#select-left');
+				$('#select-left option:selected').prop('selected',false);
+			});
+			$('#remove-all').on('click',function(){
+				$('#select-right option').appendTo('#select-left');
+			});
+			$('#select-left option').on('dblclick',function(){
+				console.log(this);
+				$(this).appendTo('#select-right');
+				$(this).prop('selected',false);
+			});
+			// $('#select-right option').on('click',function(){
+			// 	//var parent = $(this).parent();
+			// 	// 后生成元素事件绑定问题？？ 利用事件冒泡？？
+			// 	console.log(this);
+			// 	$(this).appendTo('#select-left');
+			// 	//console.log(parent);
+			// 	//$('#select-left').append($(this));
+			// });
+				$('#select-right').on('dblclick','option',function(){
+					//var parent = $(this).parent();
+					// 后生成元素事件绑定问题？？ 利用事件冒泡？？
+					//console.log(this);
+					$(this).appendTo('#select-left');
+					$('#select-left option:selected').prop('selected',false);
+					//console.log(parent);
+					//$('#select-left').append($(this));
+
+					//.on( events [, selector ] [, data ], handler(eventObject) )
+					//selector类型: String   此例中的 option
+					//一个选择器字符串，用于过滤出被选中的元素中能触发事件的后代元素。如果选择器是 null 或者忽略了该选择器，那么被选中的元素总是能触发事件。(用来处理后生成元素事件绑定问题)
+				});
+		});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+	
+</body>
+</html>

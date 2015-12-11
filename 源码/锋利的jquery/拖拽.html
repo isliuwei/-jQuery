@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>拖拽 jquery实现</title>
+	<style>
+		#div1{
+			width: 200px;
+			height: 200px;
+			background: red;
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="div1"></div>
+
+	<script src='jquery-1.11.3.js'></script>
+	<script>
+		$(function(){
+			var $div1 = $('#div1'); // jquery优化：将会重用的元素单独提取出来供后续使用,不用后续持续查找
+			$div1.on('mousedown',function(e){
+
+				var iDisX = e.pageX - $div1.offset().left;
+				var iDixY = e.pageY - $div1.offset().top;
+
+				$(document).on('mousemove',function(e){
+					var iLeft = e.pageX - iDisX;
+					var iTop = e.pageY - iDixY;
+					$div1.offset({
+						left: iLeft,
+						top: iTop
+					});
+
+				});
+			});
+			$div1.on('mouseup',function(){
+				$(document).off('mousemove');
+			});
+		});	
+	</script>
+	
+</body>
+
+</html>

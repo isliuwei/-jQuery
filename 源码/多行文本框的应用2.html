@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>高度变化</title>
+	<style>	
+		* { margin:0; padding:0;font:normal 12px/17px Arial; }
+		.msg {width:300px; margin:100px; }
+		.msg_caption { width:100%; overflow:hidden; margin-bottom:1px;}
+		.msg_caption span { display:block; float:left; margin:0 2px; padding:4px 10px; background:#898989; cursor:pointer;color:white; }
+		.msg textarea{ width:300px; height:80px;height:100px;border:1px solid #000;}
+	</style>
+</head>
+<body>
+	<form action="">
+		<div class="msg">
+			<div class="msg_caption">
+				<span class="up">向上</span>
+				<span class="down">向下</span>
+			</div>
+			<div>
+				<textarea name="" id="comment" cols="20" rows="8">你在南方的艳阳里大雪纷飞，我在北方的寒夜里四季如春，如果天黑之前来得及，我要忘了你的眼睛，穷极一生，做不完的一场梦你在南方的艳阳里大雪纷飞，我在北方的寒夜里四季如春，如果天黑之前来得及，我要忘了你的眼睛，穷极一生，做不完的一场梦你在南方的艳阳里大雪纷飞，我在北方的寒夜里四季如春，如果天黑之前来得及，我要忘了你的眼睛，穷极一生，做不完的一场梦你在南方的艳阳里大雪纷飞，我在北方的寒夜里四季如春，如果天黑之前来得及，我要忘了你的眼睛，穷极一生，做不完的一场梦你在南方的艳阳里大雪纷飞，我在北方的寒夜里四季如春，如果天黑之前来得及，我要忘了你的眼睛，穷极一生，做不完的一场梦你在南方的艳阳里大雪纷飞，我在北方的寒夜里四季如春，如果天黑之前来得及，我要忘了你的眼睛，穷极一生，做不完的一场梦你在南方的艳阳里大雪纷飞，我在北方的寒夜里四季如春，如果天黑之前来得及，我要忘了你的眼睛，穷极一生，做不完的一场梦你在南方的艳阳里大雪纷飞，我在北方的寒夜里四季如春，如果天黑之前来得及，我要忘了你的眼睛，穷极一生，做不完的一场梦你在南方的艳阳里大雪纷飞，我在北方的寒夜里四季如春，如果天黑之前来得及，我要忘了你的眼睛，穷极一生，做不完的一场梦你在南方的艳阳里大雪纷飞，我在北方的寒夜里四季如春，如果天黑之前来得及，我要忘了你的眼睛，穷极一生，做不完的一场梦你在南方的艳阳里大雪纷飞，我在北方的寒夜里四季如春，如果天黑之前来得及，我要忘了你的眼睛，穷极一生，做不完的一场梦你在南方的艳阳里大雪纷飞，我在北方的寒夜里四季如春，如果天黑之前来得及，我要忘了你的眼睛，穷极一生，做不完的一场梦你在南方的艳阳里大雪纷飞，我在北方的寒夜里四季如春，如果天黑之前来得及，我要忘了你的眼睛，穷极一生，做不完的一场梦你在南方的艳阳里大雪纷飞，我在北方的寒夜里四季如春，如果天黑之前来得及，我要忘了你的眼睛，穷极一生，做不完的一场梦</textarea>
+			</div>	
+		</div>	
+	</form>	
+
+	<script src="jquery-1.11.3.js"></script> 
+	<script>
+		$(function(){
+			$('.up').on('click',function(){
+				if(!$('#comment').is(':animated')){
+					$('#comment').animate({scrollTop: '-=50'},400);
+				}
+				
+			});
+			$('.down').on('click',function(){
+				if(!$('#comment').is(':animated')){
+					$('#comment').animate({scrollTop: '+=50'},400);
+				}
+				
+			});
+
+
+		});
+	</script>
+
+
+</body>
+</html>

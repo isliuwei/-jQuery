@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DOM操作</title>
+	<style>
+
+		.myClass{
+			background: red;
+			color: yellow;
+		}
+		.anotherClass{
+			background: blue;
+			color: white;
+		}
+		#div0{
+			width: 300px;
+			height: 300px;
+			background: #ddd;
+		}
+		#div1{
+			width: 200px;
+			height: 200px;
+			background: #ccc;
+			position: relative;
+		}
+		#div2{
+			width: 100px;
+			height: 100px;
+			font-size: 10px;
+			background: #aaa;
+			position: absolute;
+			border: 1px solid #000;
+			padding: 10px;
+			margin: 10px;
+			left: 20px;
+			top: 20px;
+		}
+	</style>
+</head>
+<body>
+
+	<button id="toggle">toggle</button>
+
+	<ul id="list">
+		<li>1</li>
+		<li class='myClass'>2</li>
+		<li>3</li>
+		<li ><a href="#">4</a></li>
+		<!-- <p>abcdef</p> -->
+	</ul>
+	<input type="text" id="address" value='请输入邮箱地址' />
+	<br />
+	<input type="text" id="password" value='请输入邮箱密码' />
+	<br />
+	<input type="button" id="submit" value='登录' />	
+
+
+	<div id="div0">
+		<div id="div1">
+			<div id="div2" title="div2">
+				<span id='son'>
+					width: 100px
+					<br>
+					height: 100px
+					<br>	
+					left: 20px 
+					<br> 
+					top: 20px 
+					<br> 
+					1px solid #000
+					<br> 
+					padding: 10px
+					<br>
+					margin: 10px
+				</span>
+			</div>
+		</div>
+	</div>
+
+	
+
+
+
+
+	<script src="jquery-1.11.3.js"></script>
+	<script>
+		$(function(){
+
+			
+			// $('ul').append($("<li title='芒果'>芒果</li>"));
+			// $('#list').append($('<li>5</li>')).css('background','red');
+			// $('<li>5</li>').appendTo($('#list')).css('background','red');
+			// $('#list').prepend($('<li>0</li>'));
+			// $('<li>0</li>').prependTo($('#list')).css('background','red');
+			// $('#list').after($('<h4>h4</h4>'));
+			// $('#list li:last').after($('<li>5</li>'));
+			// $('<li>0</li>').insertBefore($('#list li:first'));
+			// $('#list li:first').before($('<li>0</li>'));
+
+			// $('#list p').empty();
+			// $('#list li').on('click',function(){
+			// 	// $(this).clone().text('new'+$(this).html()).appendTo($('#list'));
+			// 	$(this).clone(true).text(' new '+$(this).html()).appendTo($('#list'));
+
+			// });
+			// $('#list').wrap($('<div></div>'));  // 用div把ul包裹起来
+			// $('#list li:last').wrapInner($('<a href=#></a>'))
+
+			// $('#list li:eq(1)').addClass('myClass');
+			// $('#list li:eq(1)').removeClass('myClass');
+			// $('#toggle').hover(function(){
+			// 	$('#list li:eq(1)').addClass('myClass');
+			// },function(){
+			// 	$('#list li:eq(1)').addClass('anotherClass');
+			// });
+
+			// $('#toggle').on('click',function(){
+			// 	$('#list li:eq(1)').toggleClass('anotherClass');
+			// });
+			// 	console.log($('#list li:eq(1)').is('.myClass'));
+
+
+			// var oUl = document.getElementById('list');
+			// var aLi = oUl.getElementsByTagName('li');
+			// alert(aLi[3].innerHTML);
+			// alert(aLi[3].innerText);
+
+			//alert($('#list li:last').html());
+			//alert($('#list li:last').text());
+			//console.log($('#list li:last').html('1111'));
+			//console.log($('#list li:last').text(1111));
+
+			// $('#address').on('focus',function(){
+			// 	var currentVal = $(this).val();
+			// 	if(currentVal == "请输入邮箱地址"){
+			// 		$(this).val("");
+			// 	}	
+			// });
+			// $('#address').on('blur',function(){
+			// 	var currentVal = $(this).val();
+			// 	if(currentVal == ""){
+			// 		$(this).val("请输入邮箱地址");
+			// 	}	
+			// });
+
+			// $('#password').on('focus',function(){
+			// 	var currentVal = $(this).val();
+			// 	if(currentVal == "请输入邮箱密码"){
+			// 		$(this).val("");
+			// 	}	
+			// });
+			// $('#password').on('blur',function(){
+			// 	var currentVal = $(this).val();
+			// 	if(currentVal == ""){
+			// 		$(this).val("*************");
+			// 	}	
+			// });
+			//$('#son').closest('div').css('border','1px solid #000');
+			//$('#son').parent('div').css('border','3px solid #000');
+			//$('#son').parents('div').css('border','5px solid #000');
+
+			// $('#div0').css({
+			// 	'background': 'red',
+			// 	'border': '1px solid #000',
+			// 	'opacity': '0.5'
+			// });
+			
+			//不给值  就是获取
+		// 	console.log($('#div2').width()); //content 
+		// 	console.log($('#div2').height());
+		// 	console.log($('#div2').innerWidth()); //content+padding
+		// 	console.log($('#div2').innerHeight());
+		// 	console.log($('#div2').outerWidth());  //content+padding+border
+		// 	console.log($('#div2').outerHeight());
+		// console.log($('#div2').outerWidth(true));//当有个参数true 包括margin content+padding+border+margin 
+		// 	console.log($('#div2').outerHeight(true));
+			// console.log($('#div2').width(true));  
+			// console.log($('#div2').height(true));
+			//console.log($('#div2').offset());  // 相对body
+			//console.log($('#div2').position()); // 相对最近已定位的祖先元素
+			//$('#div2').offset({left: 100,top: 100}); // 它的值是对象
+			//$('#div2').position({left: 50,top: 50});  error position无法进行设置值
+			//console.log($('#div2').offset());  // 相对body
+			//console.log($('#div2').position()); // 相对最近已定位的祖先元素
+			//$('#div2').position();
+			//console.log($('#div2').height());
+
+			//给值  就是设置
+			//$('#div2').width(400);
+			//$('#div2').height(400);
+
+
+			
+		});
+		
+		
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+
+	
+</body>
+</html>
